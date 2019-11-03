@@ -1,0 +1,43 @@
+.idea
+gradlew
+gradlew.bat
+package-lock.json
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.gradle/
+.settings/
+gradle/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Project Specific
+build
+node_modules
+dist
+.env.local
+
+# Python virtualenvs
+.conditional
+venv
+env/*
+__pycache__
+
+# Django Artifacts
+conditional/db.sqlite3
+
+# Conditional Build Artifacts
+conditional/frontend/static/*
+conditional/frontend/templates/frontend/index.html

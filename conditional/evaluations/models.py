@@ -1,0 +1,40 @@
+from enum import Enum
+
+from django.db import models
+
+
+class EvalResults(Enum):
+    Pending = 'Pending'
+    Passed = 'Passed'
+    Failed = 'Failed'
+
+
+class FreshmanEvalData(models.Model):
+    __tablename__ = 'freshman_eval_data'
+    uid = models.CharField(max_length=32, null=False)
+    freshman_project = models.CharField(max_length=32, choices=[(tag, tag.value) for tag in EvalResults], null=True)
+    eval_date = models.DateField(null=False)
+    social_events = models.TextField()
+    other_notes = models.TextField()
+    freshman_eval_result = models.CharField(max_length=32, choices=[(tag, tag.value) for tag in EvalResults], null=False)
+    active = models.BooleanField()
+
+
+class SpringEval(models.Model):
+    __tablename__ = 'spring_evals'
+    uid = models.CharField(max_length=32, null=False)
+    active = models.BooleanField(null=False)
+    date_created = models.DateField(null=False, auto_now_add=True)
+    status = models.CharField(max_length=32, choices=[(tag, tag.value) for tag in EvalResults], null=False)
+
+
+class Conditional(models.Model):
+    __tablename__ = 'conditional'
+    uid = models.CharField(max_length=32, null=False)
+    description = models.CharField(max_length=512, null=False)
+    date_created = models.DateField(null=False, auto_now_add=True)
+    date_due = models.DateField(null=False)
+    active = models.BooleanField(null=False)
+    status = models.CharField(max_length=32, choices=[(tag, tag.value) for tag in EvalResults], null=False)
+    s_evaluation = models.ForeignKey(FreshmanEvalData, models.CASCADE)
+    i_evaluation = models.ForeignKey(SpringEval, models.CASCADE)
