@@ -1,5 +1,15 @@
 import React from 'react'
-import { Collapse, Container, Nav, Navbar, NavbarToggler, NavItem } from 'reactstrap'
+import {
+  Collapse,
+  Container,
+  DropdownItem, DropdownMenu,
+  DropdownToggle,
+  Nav,
+  Navbar,
+  NavbarToggler,
+  NavItem,
+  UncontrolledDropdown
+} from 'reactstrap'
 import { NavLink } from 'react-router-dom'
 import UserProfile from '../../containers/UserProfile'
 
@@ -32,6 +42,19 @@ class NavBar extends React.Component {
                 <NavItem>
                   <NavLink to="/" className={'nav-link'}>Home</NavLink>
                 </NavItem>
+                <UncontrolledDropdown nav inNavbar>
+                  <DropdownToggle nav caret>
+                    Attendance
+                  </DropdownToggle>
+                  <DropdownMenu right>
+                    <DropdownItem tag={NavLink} to="/directorships">
+                      Directorships
+                    </DropdownItem>
+                    <DropdownItem tag={NavLink} to="/attendance/meeting">
+                      Meeting Attendance
+                    </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
               </Nav>
               <Nav navbar className="ml-auto">
                 <UserProfile/>

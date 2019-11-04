@@ -6,9 +6,15 @@ import { history } from '../store'
 import ProtectedRoute from '../containers/ProtectedRoute'
 import OidcCallback from '../containers/OidcCallback'
 import {
-  Home,
-  NavBar
+  NavBar,
+  Dashboard
 } from './index'
+import {
+  DirectorshipList
+} from './Attendance/Directorships'
+import {
+  MeetingAttendanceForm
+} from './Attendance/Meeting Attendance'
 
 class App extends Component {
   render () {
@@ -19,7 +25,9 @@ class App extends Component {
           <Container>
             <Switch>
               <Route exact path="/callback" component={OidcCallback}/>
-              <ProtectedRoute exact path="/" component={Home}/>
+              <ProtectedRoute exact path="/dashboard" component={Dashboard}/>
+              <ProtectedRoute exact path="/directorships" component={DirectorshipList}/>
+              <ProtectedRoute exact path="/attendance/meeting" component={MeetingAttendanceForm}/>
             </Switch>
           </Container>
         </Container>

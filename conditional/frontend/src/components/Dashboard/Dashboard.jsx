@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import InfoSpinner from '../InfoSpinner'
 
-class Home extends Component {
+class Dashboard extends Component {
   constructor (props) {
     super(props)
     console.log(props)
@@ -22,7 +22,7 @@ class Home extends Component {
     }
 }
 
-Home.propTypes = {
+Dashboard.propTypes = {
   oidc: PropTypes.any
 }
 
@@ -36,4 +36,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home)
+)(Dashboard)

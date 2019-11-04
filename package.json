@@ -79,7 +79,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom --passWithNoTests",
-    "dev": "webpack --config ./config/webpack.config.js --mode development ./conditional/frontend/src/index.js --output ./conditional/frontend/static/frontend/main.js",
+    "dev": "node scripts/build.js && python conditional/manage.py runserver",
     "lint": "eslint ./conditional/frontend/src/**/*.js ./conditional/frontend/src/**/*.jsx"
   },
   "devDependencies": {
