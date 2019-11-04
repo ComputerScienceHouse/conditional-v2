@@ -1,8 +1,20 @@
 from rest_framework import serializers
-from attendance.models import Committee
+from attendance.models import Directorship, DirectorshipMeeting, MemberDirectorshipAttendance
 
 
-class CommitteeSerializer(serializers.ModelSerializer):
+class DirectorshipSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Committee
+        model = Directorship
+        fields = '__all__'
+
+
+class DirectorshipMeetingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DirectorshipMeeting
+        fields = '__all__'
+
+
+class MemberDirectorshipAttendanceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MemberDirectorshipAttendance
         fields = '__all__'

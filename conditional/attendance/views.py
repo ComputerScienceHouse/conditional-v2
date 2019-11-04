@@ -1,8 +1,33 @@
-from rest_framework import generics
-from attendance.models import Committee
-from attendance.serializers import CommitteeSerializer
+from attendance.models import Directorship, DirectorshipMeeting
+from attendance.serializers import DirectorshipSerializer, DirectorshipMeetingSerializer
+from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView
 
-# Create your views here.
-class CommitteeListCreate(generics.ListCreateAPIView):
-    queryset = Committee.objects.all()
-    serializer_class = CommitteeSerializer
+
+class DirectorshipListView(ListAPIView):
+    queryset = Directorship.objects.all()
+    serializer_class = DirectorshipSerializer
+
+
+class DirectorshipActiveListView(ListAPIView):
+    queryset = Directorship.objects.filter(active=True)
+    serializer_class = DirectorshipSerializer
+
+
+class DirectorshipCreate(CreateAPIView):
+    queryset = Directorship.objects.all()
+    serializer_class = DirectorshipSerializer
+
+
+class DirectorshipView(RetrieveUpdateDestroyAPIView):
+    queryset = Directorship.objects.all()
+    serializer_class = DirectorshipSerializer
+
+
+class DirectorshipMeetingCreate(CreateAPIView):
+    queryset = DirectorshipMeeting.objects.all()
+    serializer_class = DirectorshipMeetingSerializer
+
+
+class DirectorshipMeetingView(RetrieveUpdateDestroyAPIView):
+    queryset = DirectorshipMeeting.objects.all()
+    serializer_class = DirectorshipMeetingSerializer

@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from evaluations.models import SpringEval
+from evaluations.serializers import SpringEvalSerializer
+from rest_framework.generics import RetrieveUpdateDestroyAPIView
 
-# Create your views here.
+
+class SpringEvalView(RetrieveUpdateDestroyAPIView):
+    queryset = SpringEval.objects.all()
+    serializer_class = SpringEvalSerializer
