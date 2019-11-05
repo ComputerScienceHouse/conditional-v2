@@ -4,7 +4,7 @@ from members.models import FreshmanAccount
 
 
 class Directorship(models.Model):
-    name = models.CharField(max_length=32, null=False)
+    name = models.CharField(max_length=32, null=False, unique=True)
     active = models.BooleanField(default=True)
     ad_hoc = models.BooleanField()
 
