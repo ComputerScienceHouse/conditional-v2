@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import InfoSpinner from '../../InfoSpinner'
 import MeetingSelector from './MeetingSelector'
-import { Card, CardBody, Container } from 'reactstrap'
+import { Card, CardBody, Col, Container, Row } from 'reactstrap'
 import DatePicker from '../../DatePicker/DatePicker'
+import AttendancePicker from '../../AttendancePicker/AttendancePicker'
 
 class MeetingAttendanceForm extends Component {
   constructor (props) {
@@ -21,21 +21,35 @@ class MeetingAttendanceForm extends Component {
     }
 
     render () {
-      const { oidc } = this.props
-
       return (
         <Container>
-          <Card>
-            <CardBody>
-              <MeetingSelector/>
-            </CardBody>
-          </Card>
-          <Card>
-            <CardBody>
-              <DatePicker/>
-            </CardBody>
-          </Card>
-          <InfoSpinner>Loading Attendance Form for { oidc.user.profile.preferred_username }</InfoSpinner>
+          <Row>
+            <Col>
+              <Card>
+                <CardBody>
+                  <MeetingSelector/>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Card>
+                <CardBody>
+                  <DatePicker/>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Card>
+                <CardBody>
+                  <AttendancePicker/>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
         </Container>
       )
     }

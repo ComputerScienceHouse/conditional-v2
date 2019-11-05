@@ -55,7 +55,8 @@ class DatePicker extends React.Component {
                 }
               }}
               width={'100%'}
-              min={new Date(2016, 1, 1)}
+              min={new Date(2016, 1, 1)} // TODO: Real Dates (1 year in the past)
+              max={new Date(2025, 12, 31)} // TODO: Real Dates (1 year away)
               selected={this.state.selectedDate}
               onSelect={this.handleDate}
             />
