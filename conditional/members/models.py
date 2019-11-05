@@ -1,8 +1,7 @@
 from django.db import models
 
 
-def co_op_choices():
-    return [('Fall', 'Fall'), ('Spring', 'Spring')]
+co_op_choices = [('Fall', 'Fall'), ('Spring', 'Spring')]
 
 class FreshmanAccount(models.Model):
     __tablename__ = 'freshman_accounts'
@@ -16,4 +15,4 @@ class FreshmanAccount(models.Model):
 class CurrentCoops(models.Model):
     uid = models.CharField(max_length=32, null=False)
     date_created = models.DateField(null=False, auto_now_add=True)
-    semester = models.CharField(max_length=12, choices=co_op_choices(), null=False)
+    semester = models.CharField(max_length=12, choices=co_op_choices, null=False)

@@ -3,8 +3,8 @@ from django.db import models
 from members.models import FreshmanAccount
 
 
-def attendance_status_choices():
-    return [('Attended', 'Attended'), ('Excused', 'Excused'), ('Absent', 'Absent')]
+attendance_status_choices = [('Attended', 'Attended'), ('Excused', 'Excused'), ('Absent', 'Absent')]
+
 
 class Directorship(models.Model):
     name = models.CharField(max_length=32, null=False, unique=True)
@@ -55,12 +55,12 @@ class MemberHouseMeetingAttendance(models.Model):
     uid = models.CharField(max_length=32, null=False)
     meeting_id = models.ForeignKey(HouseMeeting, on_delete=models.CASCADE, null=False)
     excuse = models.TextField()
-    attendance_status = models.CharField(max_length=32, choices=attendance_status_choices())
+    attendance_status = models.CharField(max_length=32, choices=attendance_status_choices)
 
 
 class FreshmanHouseMeetingAttendance(models.Model):
     fid = models.ForeignKey(FreshmanAccount, on_delete=models.CASCADE, null=False)
     meeting_id = models.ForeignKey(HouseMeeting, on_delete=models.CASCADE, null=False)
     excuse = models.TextField()
-    attendance_status = models.CharField(max_length=32, choices=attendance_status_choices())
+    attendance_status = models.CharField(max_length=32, choices=attendance_status_choices)
 

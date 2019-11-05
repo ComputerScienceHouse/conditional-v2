@@ -39,19 +39,51 @@ class NavBar extends React.Component {
             <NavbarToggler onClick={this.toggle}/>
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav navbar>
+                <UncontrolledDropdown nav inNavbar>
+                  <DropdownToggle nav caret>
+                    Evals
+                  </DropdownToggle>
+                  <DropdownMenu left>
+                    <DropdownItem tag={NavLink} to="/evals/intro">
+                      Introductory Evaluations
+                    </DropdownItem>
+                    <DropdownItem tag={NavLink} to="/evals/members">
+                      Membership Evaluations
+                    </DropdownItem>
+                    <DropdownItem tag={NavLink} to="/evals/conditionals">
+                      Conditionals
+                    </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+                <UncontrolledDropdown nav inNavbar>
+                  <DropdownToggle nav caret>
+                    Forms
+                  </DropdownToggle>
+                  <DropdownMenu left>
+                    <DropdownItem tag={NavLink} to="/evals/majorproject">
+                      Major Project
+                    </DropdownItem>
+                    <DropdownItem tag={NavLink} to="/members/coop">
+                      Co-Op Submission
+                    </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
                 <NavItem>
-                  <NavLink to="/" className={'nav-link'}>Home</NavLink>
+                  <NavLink to="/housing" className={'nav-link'}>Housing</NavLink>
                 </NavItem>
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret>
                     Attendance
                   </DropdownToggle>
-                  <DropdownMenu right>
+                  <DropdownMenu left>
                     <DropdownItem tag={NavLink} to="/directorships">
                       Directorships
                     </DropdownItem>
                     <DropdownItem tag={NavLink} to="/attendance/meeting">
                       Meeting Attendance
+                    </DropdownItem>
+                    <DropdownItem tag={NavLink} to="/attendance/seminar">
+                      Seminar Attendance
                     </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
