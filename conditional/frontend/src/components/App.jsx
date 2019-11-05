@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Container } from 'reactstrap'
 import { ConnectedRouter } from 'connected-react-router'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import { history } from '../store'
 import ProtectedRoute from '../containers/ProtectedRoute'
 import OidcCallback from '../containers/OidcCallback'
@@ -25,6 +25,7 @@ class App extends Component {
           <Container>
             <Switch>
               <Route exact path="/callback" component={OidcCallback}/>
+              <Route exact path="/"><Redirect to="/dashboard"/></Route>
               <ProtectedRoute exact path="/dashboard" component={Dashboard}/>
               <ProtectedRoute exact path="/directorships" component={DirectorshipList}/>
               <ProtectedRoute exact path="/attendance/meeting" component={MeetingAttendanceForm}/>
