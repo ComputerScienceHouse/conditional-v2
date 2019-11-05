@@ -31,3 +31,12 @@ class Conditional(models.Model):
     status = models.CharField(max_length=32, choices=eval_results_choices(), null=False)
     s_evaluation = models.ForeignKey(FreshmanEvalData, models.CASCADE)
     i_evaluation = models.ForeignKey(SpringEval, models.CASCADE)
+
+
+class MajorProject(models.Model):
+    date = models.DateField(null=False, auto_now_add=True)
+    uid = models.CharField(max_length=32, null=False)
+    name = models.CharField(max_length=64, null=False)
+    description = models.TextField()
+    active = models.BooleanField(null=False)
+    status = models.CharField(max_length=32, choices=eval_results_choices(), null=False)
