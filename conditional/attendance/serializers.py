@@ -1,44 +1,22 @@
+from sys import modules
+
 from rest_framework import serializers
-from attendance.models import Directorship, DirectorshipMeeting, MemberDirectorshipAttendance, FreshmanDirectorshipAttendance, TechnicalSeminar, MemberSeminarAttendance, FreshmanSeminarAttendance
 
 
-class DirectorshipSerializer(serializers.ModelSerializer):
+this_module = modules[__name__]
+
+
+def create_serializer(model_cls):
+    '''
+    Generate a Serializer class for the provided class and add it to this module
+    '''
+
     class Meta:
-        model = Directorship
+        model = model_cls
         fields = '__all__'
 
+    new_name = model_cls.__name__ + 'Serializer'
+    new_class = type(new_name, (serializers.ModelSerializer), {'Meta': Meta})
+    setattr(this_module, new_name, new_class)
 
-class DirectorshipMeetingSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = DirectorshipMeeting
-        fields = '__all__'
-
-
-class MemberDirectorshipAttendanceSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = MemberDirectorshipAttendance
-        fields = '__all__'
-
-
-class FreshmanDirectorshipAttendanceSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = FreshmanDirectorshipAttendance
-        fields = '__all__'
-
-
-class TechnicalSeminarSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = TechnicalSeminar
-        fields = '__all__'
-
-
-class MemberSeminarAttendanceSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = MemberSeminarAttendance
-        fields = '__all__'
-
-
-class FreshmanSeminarAttendanceSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = FreshmanSeminarAttendance
-        fields = '__all__'
+    return model_cls

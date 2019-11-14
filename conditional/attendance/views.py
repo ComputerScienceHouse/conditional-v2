@@ -1,5 +1,4 @@
-from attendance.models import Directorship, DirectorshipMeeting
-from attendance.serializers import DirectorshipSerializer, DirectorshipMeetingSerializer
+from attendance.models import Directorship, DirectorshipSerializer, DirectorshipMeeting, DirectorshipMeetingSerializer
 from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView
 
 
