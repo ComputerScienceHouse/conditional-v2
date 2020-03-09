@@ -1,6 +1,6 @@
 from django.db import models
 
-from attendance.serializers import create_serializer
+from utils import create_serializer
 from members.models import FreshmanAccount
 
 
