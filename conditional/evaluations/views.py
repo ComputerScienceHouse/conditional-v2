@@ -1,5 +1,4 @@
-from evaluations.models import SpringEval
-from evaluations.serializers import SpringEvalSerializer
+from evaluations.models import SpringEval, SpringEvalSerializer
 from rest_framework.generics import RetrieveUpdateDestroyAPIView
 
 

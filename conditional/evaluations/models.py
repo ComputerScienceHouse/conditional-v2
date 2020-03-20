@@ -1,5 +1,7 @@
 from django.db import models
 
+from utils import create_serializer
+
 
 eval_results_choices = [('Pending', 'Pending'), ('Passed', 'Passed'), ('Failed', 'Failed')]
 
@@ -14,6 +16,7 @@ class FreshmanEvalData(models.Model):
     active = models.BooleanField()
 
 
+@create_serializer
 class SpringEval(models.Model):
     uid = models.CharField(max_length=32, null=False)
     active = models.BooleanField(null=False)
