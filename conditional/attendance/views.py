@@ -1,4 +1,4 @@
-from attendance.models import Directorship, DirectorshipSerializer, DirectorshipMeeting, DirectorshipMeetingSerializer
+from attendance.models import Directorship, DirectorshipSerializer, DirectorshipMeeting, DirectorshipMeetingSerializer # pylint: disable=E0611
 from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView
 
 
