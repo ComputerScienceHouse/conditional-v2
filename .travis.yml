@@ -1,8 +1,20 @@
-language: node_js
-node_js:
-  - "10"
+matrix:
+  include:
+    - language: node_js
+      node_js:
+        - "10"
 
-script:
-  - npm run lint
-  - npm run build
-  - npm test
+      script:
+        - npm run lint
+        - npm run build
+        - npm test
+
+    - language: python
+      python:
+        - "3.8"
+
+      install:
+        - "pip install -r requirements.txt"
+      script:
+        - "shopt -s globstar"
+        - "pylint --load-plugins pylint_quotes --load-plugins pylint_django conditional/**/*.py"
