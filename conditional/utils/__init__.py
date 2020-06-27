@@ -4,9 +4,9 @@ from rest_framework import serializers
 
 
 def create_serializer(model_cls):
-    '''
+    """
     Generate a Serializer class for the provided class and add it to this module
-    '''
+    """
 
     this_module = modules[model_cls.__module__]
 

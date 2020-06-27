@@ -20,11 +20,11 @@ from drf_yasg import openapi
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Conditional API",
+        title='Conditional API',
         default_version='v2',
-        description="Test description",
-        contact=openapi.Contact(email="contact@snippets.local"),
-        license=openapi.License(name="Mozilla Public License 2.0"),
+        description='Test description',
+        contact=openapi.Contact(email='contact@snippets.local'),
+        license=openapi.License(name='Mozilla Public License 2.0'),
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),
