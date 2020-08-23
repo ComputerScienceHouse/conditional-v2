@@ -1,3 +1,5 @@
 from django.shortcuts import render
+from member.serializers import MemberAccountSerializer
 
-# Create your views here.
+class MemberListView(viewsets.ViewSet):
+    serializer_class = serializers.MemberAccountSerializer

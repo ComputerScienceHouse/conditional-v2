@@ -17,9 +17,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "noImplicitAny": false,
     "jsx": "react"
   },
   "include": [
-    "src"
+    "conditional/frontend/src"
   ]
 }
