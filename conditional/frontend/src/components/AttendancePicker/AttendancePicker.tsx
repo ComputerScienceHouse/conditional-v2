@@ -2,7 +2,7 @@ import React from 'react'
 import { Input, Label } from 'reactstrap'
 import Select from 'react-select'
 
-class AttendancePicker extends React.Component {
+export class AttendancePicker extends React.Component {
   constructor (props) {
     super(props)
     console.log(props)
@@ -25,5 +25,3 @@ class AttendancePicker extends React.Component {
     )
   }
 };
-
-export default AttendancePicker

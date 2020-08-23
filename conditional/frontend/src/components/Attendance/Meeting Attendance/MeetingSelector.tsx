@@ -5,7 +5,14 @@ import { FormGroup, Label, Input } from 'reactstrap'
 import InfoSpinner from '../../InfoSpinner'
 import { fetchDirectorships } from '../../../actions/get'
 
-class MeetingSelector extends React.Component {
+interface MeetingSelectorProps {
+  directorships: Array<any>;
+  getDirectorships: Function;
+  oidc: any;
+  meetings: any;
+}
+
+class MeetingSelector extends React.Component<MeetingSelectorProps> {
   constructor (props) {
     super(props)
     console.log(props)
@@ -45,13 +52,6 @@ class MeetingSelector extends React.Component {
       </FormGroup>
     )
   };
-}
-
-MeetingSelector.propTypes = {
-  directorships: PropTypes.array,
-  getDirectorships: PropTypes.func,
-  oidc: PropTypes.any,
-  meetings: PropTypes.any
 }
 
 const mapStateToProps = state => ({

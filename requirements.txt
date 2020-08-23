@@ -4,3 +4,4 @@ drf-yasg
 pylint
 pylint-django
 pylint-quotes
+csh-ldap

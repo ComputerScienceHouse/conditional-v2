@@ -3,41 +3,28 @@ import InfiniteCalendar from 'react-infinite-calendar'
 import 'react-infinite-calendar/styles.css'
 import { Input, Label, Modal, ModalBody } from 'reactstrap'
 
-class DatePicker extends React.Component {
-  constructor (props) {
-    super(props)
-    console.log(props)
+export const DatePicker: React.FunctionComponent = (props) => {
 
-    this.toggle = this.toggle.bind(this)
-    this.handleDate = this.handleDate.bind(this)
-    this.state = {
-      isOpen: false,
-      selectedDate: new Date()
-    }
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
+
+  const toggle = () => {
+    setIsOpen(!isOpen);
   }
 
-  toggle () {
-    this.setState({
-      isOpen: !this.state.isOpen
-    })
-  }
-
-  handleDate (date) {
-    this.setState({
-      selectedDate: date
-    })
+  const handleDate = (date) => {
+    setSelectedDate(date)
     console.log(date)
     return date
   }
 
-  render () {
     return (
       <div>
         <Label for="datepicker">Meeting Date</Label>
-        <Input id="datepicker" onClick={this.toggle} value={this.state.selectedDate}>
-          {this.state.selectedDate}
+        <Input id="datepicker" onClick={toggle} value={selectedDate}>
+          {selectedDate}
         </Input>
-        <Modal isOpen={this.state.isOpen} toggle={this.toggle}>
+        <Modal isOpen={isOpen} toggle={toggle}>
           <ModalBody>
             <InfiniteCalendar
               theme={{
@@ -57,14 +44,11 @@ class DatePicker extends React.Component {
               width={'100%'}
               min={new Date(2016, 1, 1)} // TODO: Real Dates (1 year in the past)
               max={new Date(2025, 12, 31)} // TODO: Real Dates (1 year away)
-              selected={this.state.selectedDate}
-              onSelect={this.handleDate}
+              selected={selectedDate}
+              onSelect={handleDate}
             />
           </ModalBody>
         </Modal>
       </div>
     )
-  }
 };
-
-export default DatePicker

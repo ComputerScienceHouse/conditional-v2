@@ -1,7 +1,13 @@
 from django.db import models
+from conditional.settings import LDAP
 
 
 co_op_choices = [('Fall', 'Fall'), ('Spring', 'Spring')]
+
+class MemberAccount():
+    def __init__(self, uid):
+        self.ldap_account = LDAP.get_member(uid)
+
 
 class FreshmanAccount(models.Model):
     __tablename__ = 'freshman_accounts'

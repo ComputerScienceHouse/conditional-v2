@@ -13,31 +13,21 @@ import {
 import { NavLink } from 'react-router-dom'
 import UserProfile from '../../containers/UserProfile'
 
-class NavBar extends React.Component {
-  constructor (props) {
-    super(props)
+const NavBar: React.FunctionComponent = () => {
 
-    this.state = {
-      isOpen: false
-    }
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
-    this.toggle = this.toggle.bind(this)
+  const toggle = () => {
+    setIsOpen(!isOpen);
   }
 
-  toggle () {
-    this.setState({
-      isOpen: !this.state.isOpen
-    })
-  }
-
-  render () {
     return (
       <div>
         <Navbar color="primary" dark expand="lg" fixed="top">
           <Container>
             <NavLink to="/" className={'navbar-brand'}>Conditional</NavLink>
-            <NavbarToggler onClick={this.toggle}/>
-            <Collapse isOpen={this.state.isOpen} navbar>
+            <NavbarToggler onClick={toggle}/>
+            <Collapse isOpen={isOpen} navbar>
               <Nav navbar>
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret>
@@ -96,9 +86,7 @@ class NavBar extends React.Component {
         </Navbar>
       </div>
     )
-  }
-}
 
-NavBar.propTypes = {}
+}
 
 export default NavBar

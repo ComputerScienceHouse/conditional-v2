@@ -3,17 +3,13 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import MeetingSelector from './MeetingSelector'
 import { Card, CardBody, Col, Container, Row } from 'reactstrap'
-import DatePicker from '../../DatePicker/DatePicker'
-import AttendancePicker from '../../AttendancePicker/AttendancePicker'
+import DatePicker from '../../DatePicker'
+import { AttendancePicker } from '../../AttendancePicker/AttendancePicker'
 
 class MeetingAttendanceForm extends Component {
   constructor (props) {
     super(props)
     console.log(props)
-  }
-
-  componentDidMount () {
-
   }
 
     handleSelect = (event) => {
@@ -53,10 +49,6 @@ class MeetingAttendanceForm extends Component {
         </Container>
       )
     }
-}
-
-MeetingAttendanceForm.propTypes = {
-  oidc: PropTypes.any
 }
 
 const mapStateToProps = state => ({

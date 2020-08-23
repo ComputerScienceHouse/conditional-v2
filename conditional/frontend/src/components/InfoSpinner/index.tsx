@@ -14,8 +14,4 @@ class InfoSpinner extends React.Component {
   }
 }
 
-InfoSpinner.propTypes = {
-  children: PropTypes.any
-}
-
 export default InfoSpinner
