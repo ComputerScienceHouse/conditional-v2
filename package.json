@@ -4,10 +4,10 @@
   "private": true,
   "dependencies": {
     "@babel/core": "7.6.0",
-    "@fortawesome/fontawesome-svg-core": "^1.2.19",
-    "@fortawesome/free-brands-svg-icons": "^5.9.0",
-    "@fortawesome/free-solid-svg-icons": "^5.9.0",
-    "@fortawesome/react-fontawesome": "^0.1.4",
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-brands-svg-icons": "^5.11.2",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.7",
     "@svgr/webpack": "4.3.2",
     "@typescript-eslint/eslint-plugin": "^2.2.0",
     "@typescript-eslint/parser": "^2.2.0",
@@ -43,6 +43,7 @@
     "jest-resolve": "24.9.0",
     "jest-watch-typeahead": "0.4.0",
     "mini-css-extract-plugin": "0.8.0",
+    "node-sass": "^4.13.0",
     "oidc-client": "^1.5.4",
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "pnp-webpack-plugin": "1.5.0",
@@ -56,9 +57,11 @@
     "react-app-polyfill": "^1.0.4",
     "react-dev-utils": "^9.1.0",
     "react-dom": "^16.5.2",
+    "react-infinite-calendar": "^2.3.1",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
+    "react-select": "^3.0.8",
     "reactstrap": "^7.1.0",
     "redux": "^4.0.1",
     "redux-oidc": "^3.1.0",
@@ -79,19 +82,27 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom --passWithNoTests",
-    "dev": "webpack --config ./config/webpack.config.js --mode development ./conditional/frontend/src/index.js --output ./conditional/frontend/static/frontend/main.js",
-    "lint": "eslint ./conditional/frontend/src/**/*.js ./conditional/frontend/src/**/*.jsx"
+    "dev": "node scripts/build.js && python conditional/manage.py runserver",
+    "lint": "eslint ./conditional/frontend/src/**/*.ts ./conditional/frontend/src/**/*.tsx"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.2",
     "eslint": "^6.1.0",
+    "@types/node": "^14.6.0",
+    "@types/react": "^16.9.46",
+    "@types/react-infinite-calendar": "^2.3.5",
+    "@types/reactstrap": "^8.5.1",
     "eslint-config-standard": "^13.0.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-standard": "^4.0.0",
+    "typescript": "^4.0.2",
     "webpack-cli": "^3.3.10"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -116,7 +127,9 @@
     "setupFiles": [
       "react-app-polyfill/jsdom"
     ],
-    "setupFilesAfterEnv": [],
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.ts"
+    ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
       "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
@@ -157,8 +170,5 @@
     "presets": [
       "react-app"
     ]
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   }
 }

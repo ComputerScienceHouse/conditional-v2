@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from os import environ as env
+from csh_ldap import CSHLDAP
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -93,7 +95,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'EST'
 
 USE_I18N = True
 
@@ -106,3 +108,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# LDAP Definition
+
+LDAP = CSHLDAP(
+    bind_dn=env.get('LDAP_BIND_DN'),
+    bind_pw=env.get('LDAP_BIND_PW'),
+    ro=env.get('LDAP_RO')
+)

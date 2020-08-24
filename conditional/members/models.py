@@ -1,4 +1,12 @@
 from django.db import models
+from conditional.settings import LDAP
+
+
+co_op_choices = [('Fall', 'Fall'), ('Spring', 'Spring')]
+
+class MemberAccount():
+    def __init__(self, uid):
+        self.ldap_account = LDAP.get_member(uid)
 
 
 class FreshmanAccount(models.Model):
@@ -8,3 +16,9 @@ class FreshmanAccount(models.Model):
     onfloor_status = models.BooleanField()
     room_number = models.CharField(max_length=25)
     rit_username = models.CharField(max_length=10, null=True)
+
+
+class CurrentCoops(models.Model):
+    uid = models.CharField(max_length=32, null=False)
+    date_created = models.DateField(null=False, auto_now_add=True)
+    semester = models.CharField(max_length=12, choices=co_op_choices, null=False)
