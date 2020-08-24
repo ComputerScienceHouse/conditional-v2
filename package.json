@@ -9,8 +9,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/react-fontawesome": "^0.1.7",
     "@svgr/webpack": "4.3.2",
-    "@types/node": "^14.6.0",
-    "@types/react": "^16.9.46",
     "@typescript-eslint/eslint-plugin": "^2.2.0",
     "@typescript-eslint/parser": "^2.2.0",
     "babel-eslint": "10.0.3",
@@ -85,11 +83,15 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom --passWithNoTests",
     "dev": "node scripts/build.js && python conditional/manage.py runserver",
-    "lint": "eslint ./conditional/frontend/src/**/*.js ./conditional/frontend/src/**/*.jsx"
+    "lint": "eslint ./conditional/frontend/src/**/*.ts ./conditional/frontend/src/**/*.tsx"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.2",
     "eslint": "^6.1.0",
+    "@types/node": "^14.6.0",
+    "@types/react": "^16.9.46",
+    "@types/react-infinite-calendar": "^2.3.5",
+    "@types/reactstrap": "^8.5.1",
     "eslint-config-standard": "^13.0.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^9.1.0",

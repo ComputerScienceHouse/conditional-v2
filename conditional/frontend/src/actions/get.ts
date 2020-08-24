@@ -1,5 +1,7 @@
 import fetch from 'cross-fetch'
 
+// Replace with useFetch hooks
+
 // Credit to @ramzallan in tonic
 
 export const REQUEST_DIRECTORSHIPS = 'REQUEST_DIRECTORSHIPS'

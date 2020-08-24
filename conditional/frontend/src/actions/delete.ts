@@ -1,5 +1,7 @@
 import fetch from 'cross-fetch'
 
+// Replace with useFetch hooks
+
 // Credit to @ramzallan in tonic
 
 // eslint-disable-next-line no-unused-vars

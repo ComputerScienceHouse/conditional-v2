@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { FormGroup, Label, Input } from 'reactstrap'
 import InfoSpinner from '../../InfoSpinner'
@@ -12,46 +11,36 @@ interface MeetingSelectorProps {
   meetings: any;
 }
 
-class MeetingSelector extends React.Component<MeetingSelectorProps> {
-  constructor (props) {
-    super(props)
-    console.log(props)
+const MeetingSelector: React.FunctionComponent<MeetingSelectorProps> = ({ directorships, getDirectorships, oidc, meetings }) => {
 
-    this.state = {
-      meetings: null
-    }
-  }
-
-  renderMeetingOptions () {
-    return this.props.directorships.map((directorship, index) => {
+  const renderMeetingOptions = () => {
+    return directorships.map((directorship, index) => {
       return (
         <option key={index} value={directorship.id}>{directorship.name}</option>
       )
     })
   }
 
-  componentDidMount () {
-    if (this.props.oidc.user && !this.props.directorships) {
-      this.props.getDirectorships(this.props.oidc.user.access_token)
+  React.useEffect(() => {
+    if (oidc.user && !directorships) {
+      getDirectorships(oidc.user.access_token)
     }
+  }, []);
+
+  if (!this.props.directorships) {
+    return (<InfoSpinner>Loading Directorships</InfoSpinner>)
+  } else if (!this.props.directorships.length) {
+    return (<h2>No Directorships found</h2>)
   }
 
-  render () {
-    if (!this.props.directorships) {
-      return (<InfoSpinner>Loading Directorships</InfoSpinner>)
-    } else if (!this.props.directorships.length) {
-      return (<h2>No Directorships found</h2>)
-    }
-
-    return (
-      <FormGroup>
-        <Label for="meeting">Meeting Name</Label>
-        <Input id="meeting" type="select">
-          {this.renderMeetingOptions()}
-        </Input>
-      </FormGroup>
-    )
-  };
+  return (
+    <FormGroup>
+      <Label for={"meeting"}>Meeting Name</Label>
+      <Input id={"meeting"} type={"select"}>
+        {renderMeetingOptions()}
+      </Input>
+    </FormGroup>
+  )
 }
 
 const mapStateToProps = state => ({

@@ -14,36 +14,36 @@ const Profile: React.FunctionComponent<ProfileProps> = ({ name, username }) => {
     setIsOpen(!isOpen);
   }
 
-    if (!name || !username) return null
+  if (!name || !username) return null
 
-    return (
-      <UncontrolledDropdown nav inNavbar>
-        <DropdownToggle nav caret className="navbar-user">
-          <img
-            className="rounded-circle"
-            src={`https://profiles.csh.rit.edu/image/${username}`}
-            alt=""
-            aria-hidden={true}
-            width={32}
-            height={32}
-          />
-          {name} ({username})
-          <span className="caret"/>
-        </DropdownToggle>
-        <DropdownMenu>
-          <DropdownItem>
-                        Dashboard
+  return (
+    <UncontrolledDropdown nav inNavbar>
+      <DropdownToggle nav caret className="navbar-user">
+        <img
+          className="rounded-circle"
+          src={`https://profiles.csh.rit.edu/image/${username}`}
+          alt=""
+          aria-hidden={true}
+          width={32}
+          height={32}
+        />
+        {name} ({username})
+          <span className="caret" />
+      </DropdownToggle>
+      <DropdownMenu>
+        <DropdownItem>
+          Dashboard
           </DropdownItem>
-          <DropdownItem>
-                        Settings
+        <DropdownItem>
+          Settings
           </DropdownItem>
-          <DropdownItem divider/>
-          <DropdownItem>
-                        Logout
+        <DropdownItem divider />
+        <DropdownItem>
+          Logout
           </DropdownItem>
-        </DropdownMenu>
-      </UncontrolledDropdown>
-    )
+      </DropdownMenu>
+    </UncontrolledDropdown>
+  )
 }
 
 export default Profile

@@ -1,54 +1,42 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import { connect } from 'react-redux'
 import MeetingSelector from './MeetingSelector'
 import { Card, CardBody, Col, Container, Row } from 'reactstrap'
 import DatePicker from '../../DatePicker'
 import { AttendancePicker } from '../../AttendancePicker/AttendancePicker'
 
-class MeetingAttendanceForm extends Component {
-  constructor (props) {
-    super(props)
-    console.log(props)
-  }
-
-    handleSelect = (event) => {
-
-    }
-
-    render () {
-      return (
-        <Container>
-          <Row>
-            <Col>
-              <Card>
-                <CardBody>
-                  <MeetingSelector/>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Card>
-                <CardBody>
-                  <DatePicker/>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Card>
-                <CardBody>
-                  <AttendancePicker/>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-      )
-    }
+const MeetingAttendanceForm: React.FunctionComponent = () => {
+  return (
+    <Container>
+      <Row>
+        <Col>
+          <Card>
+            <CardBody>
+              <MeetingSelector />
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Card>
+            <CardBody>
+              <DatePicker />
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Card>
+            <CardBody>
+              <AttendancePicker />
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
+  )
 }
 
 const mapStateToProps = state => ({

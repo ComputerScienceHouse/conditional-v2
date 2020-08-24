@@ -1,11 +1,16 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Route } from 'react-router-dom'
 import userManager from '../userManager'
 import InfoSpinner from '../components/InfoSpinner/index'
 
-const ProtectedRoute = ({ component: Component, user, ...args }) => (
+interface ProtectedRouteProps {
+  component: any;
+  user: any;
+  args: any;
+}
+
+const ProtectedRoute: React.FunctionComponent<ProtectedRouteProps> = ({ component: Component, user, ...args }) => (
   <Route {...args} render={(props) => {
     if (!user || user.expired) {
       // User is not logged in or their access token has expired
@@ -18,12 +23,6 @@ const ProtectedRoute = ({ component: Component, user, ...args }) => (
     return <Component {...props} />
   }}/>
 )
-
-ProtectedRoute.propTypes = {
-  component: PropTypes.any,
-  user: PropTypes.any,
-  args: PropTypes.any
-}
 
 const mapStateToProps = (state) => ({
   user: state.oidc.user

@@ -6,9 +6,9 @@ interface SpinnerProps {
 }
 
 const Spinner: React.FunctionComponent<SpinnerProps> = ({ className }) => {
-    return (
-      <div className={`spinner ${className}`} />
-    )
+  return (
+    <div className={`spinner ${className}`} />
+  )
 }
 
 export default Spinner
